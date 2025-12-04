@@ -1,0 +1,19 @@
+module Adder_Exponent_Bias_16 (
+    input [4:0] E_a, E_b,
+    output reg [4:0] E_r
+);
+    reg [5:0] temp_sum; // 6 bit để check overflow
+    wire [4:0] bias = 5'd15; // Bias cho Half Precision
+
+    always @(*) begin
+        // E_r = E_a + E_b - Bias
+        temp_sum = E_a + E_b - bias;
+        
+        if (temp_sum[5]) begin // Nếu bit 5 lên 1 hoặc số âm (underflow check logic đơn giản)
+             if (E_a + E_b < bias) E_r = 5'd0; // Underflow
+             else E_r = 5'h1F; // Overflow (tạm thời, Normalizer sẽ check kỹ hơn)
+        end else begin
+             E_r = temp_sum[4:0];
+        end
+    end
+endmodule

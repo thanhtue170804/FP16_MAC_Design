@@ -1,0 +1,119 @@
+`timescale 1ns / 1ps
+
+module tb_FP_Add_16;
+
+    // Inputs
+    reg [15:0] in_numA;
+    reg [15:0] in_numB;
+
+    // Outputs
+    wire [15:0] out_data;
+
+    // Instantiate the Unit Under Test (UUT)
+    FP_Add_16 uut (
+        .in_numA(in_numA), 
+        .in_numB(in_numB), 
+        .out_data(out_data)
+    );
+
+    // Task giúp hiển thị kết quả gọn gàng
+    task display_check;
+        input [15:0] expect_val; // Giá trị mong đợi (nếu biết trước)
+        begin
+            #10; // Đợi một chút để mạch ổn định
+            $display("Time: %0t | A: %h | B: %h | Out: %h | Expect: %h", 
+                     $time, in_numA, in_numB, out_data, expect_val);
+            
+            if (expect_val != 16'hxxxx && out_data !== expect_val)
+                $display(" -> FAIL! Expected %h but got %h", expect_val, out_data);
+            else if (expect_val != 16'hxxxx)
+                $display(" -> PASS");
+            $display("---------------------------------------------------------------");
+        end
+    endtask
+
+    initial begin
+        // --- Khởi tạo ---
+        $display("=== BAT DAU MO PHONG FP_ADD_16 (HALF PRECISION) ===");
+        $display("Format: A, B, Out are in HEX (16-bit)");
+        in_numA = 0;
+        in_numB = 0;
+        
+        // ---------------------------------------------------------
+        // CASE 1: 1.0 + 2.0 = 3.0
+        // 1.0 (float16) = 0x3C00 (Sign=0, Exp=15, Mant=0)
+        // 2.0 (float16) = 0x4000 (Sign=0, Exp=16, Mant=0)
+        // 3.0 (float16) = 0x4200 (Sign=0, Exp=16, Mant=100... -> 1.5 * 2^1)
+        // ---------------------------------------------------------
+        in_numA = 16'h3C00; 
+        in_numB = 16'h4000;
+        display_check(16'h4200);
+
+        // ---------------------------------------------------------
+        // CASE 2: 1.5 - 1.0 = 0.5 (Phép cộng số âm)
+        // 1.5  = 0x3E00
+        // -1.0 = 0xBC00 (Sign=1, Exp=15, Mant=0)
+        // 0.5  = 0x3800 (Sign=0, Exp=14, Mant=0)
+        // ---------------------------------------------------------
+        in_numA = 16'h3E00;
+        in_numB = 16'hBC00;
+        display_check(16'h3800);
+
+        // ---------------------------------------------------------
+        // CASE 3: Cộng với 0
+        // 5.0 (0x4500) + 0.0 (0x0000) = 5.0
+        // ---------------------------------------------------------
+        in_numA = 16'h4500;
+        in_numB = 16'h0000;
+        display_check(16'h4500);
+
+        // ---------------------------------------------------------
+        // CASE 4: Hai số bằng nhau trái dấu (Kết quả về 0)
+        // 2.0 + (-2.0) = 0
+        // ---------------------------------------------------------
+        in_numA = 16'h4000; // 2.0
+        in_numB = 16'hC000; // -2.0
+        display_check(16'h0000);
+
+        // ---------------------------------------------------------
+        // CASE 5: Infinity (Vô cực)
+        // Inf = 0x7C00 (Exp=31, Mant=0)
+        // Inf + 1.0 = Inf
+        // ---------------------------------------------------------
+        in_numA = 16'h7C00; // +Inf
+        in_numB = 16'h3C00; // 1.0
+        display_check(16'h7C00);
+
+        // ---------------------------------------------------------
+        // CASE 6: NaN (Not a Number)
+        // NaN + Bất kỳ = NaN
+        // NaN (Canonical) = 0x7E00
+        // ---------------------------------------------------------
+        in_numA = 16'h7E00; // NaN
+        in_numB = 16'h3C00; // 1.0
+        display_check(16'h7E00);
+        
+        // ---------------------------------------------------------
+        // CASE 7: Overflow (Tràn số)
+        // Số lớn nhất (Max) ~ 65504 = 0x7BFF
+        // Max + Max -> Inf
+        // ---------------------------------------------------------
+        in_numA = 16'h7BFF; // Max Positive
+        in_numB = 16'h7BFF; // Max Positive
+        display_check(16'h7C00); // Expect Infinity
+
+        // ---------------------------------------------------------
+        // CASE 8: Small numbers (Cần shift mantissa nhiều)
+        // 6.0 + 0.125
+        // 6.0 = 0x4600 (1.5 * 2^2)
+        // 0.125 = 0x3000 (1.0 * 2^-3)
+        // Kết quả = 6.125 = 0x4620
+        // ---------------------------------------------------------
+        in_numA = 16'h4600;
+        in_numB = 16'h3000;
+        display_check(16'h4620);
+
+        $finish;
+    end
+      
+endmodule

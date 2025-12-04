@@ -1,0 +1,170 @@
+module FP_Add_16 (
+    input [15:0] in_numA, in_numB,
+    output reg [15:0] out_data
+);
+    // --- Internal registers and wires ---
+    reg signA, signB, sign_result;
+    reg [4:0] expA, expB, bigger_exp, exp_diff, normalised_exp; // Exp 5 bit
+    reg [10:0] mantA, mantB, aligned_A, aligned_B; // Mantissa 10 bit + 1 bit ẩn = 11 bit
+    reg [11:0] sum_mant; // 1 bit dấu/tràn + 11 bit mantissa = 12 bit
+    reg [4:0] shift_count; // Shift tối đa khoảng 11-12 bit
+
+    // --- Trích xuất các trường hợp đặc biệt ---
+    // Kiểm tra toàn bộ trừ bit dấu (bit 14:0)
+    wire is_A_zero = (in_numA[14:0] == 15'h0);
+    wire is_B_zero = (in_numB[14:0] == 15'h0);
+    
+    // Infinity và NaN check trên 5 bit Exp (Toàn là 1 => 5'h1F = 31)
+    wire is_A_inf = (in_numA[14:10] == 5'h1F && in_numA[9:0] == 10'h0);
+    wire is_B_inf = (in_numB[14:10] == 5'h1F && in_numB[9:0] == 10'h0);
+    wire is_A_nan = (in_numA[14:10] == 5'h1F && in_numA[9:0] != 10'h0);
+    wire is_B_nan = (in_numB[14:10] == 5'h1F && in_numB[9:0] != 10'h0);
+    wire opposite_inf = (is_A_inf && is_B_inf && (in_numA[15] != in_numB[15]));
+
+    always @ (*) begin
+        // --- Khởi tạo các tín hiệu ---
+        signA = in_numA[15];
+        signB = in_numB[15];
+        expA = in_numA[14:10];
+        expB = in_numB[14:10];
+        // Thêm bit ẩn 1 vào trước 10 bit mantissa
+        mantA = is_A_zero ? 11'h0 : {1'b1, in_numA[9:0]};
+        mantB = is_B_zero ? 11'h0 : {1'b1, in_numB[9:0]};
+        
+        aligned_A = 11'h0;
+        aligned_B = 11'h0;
+        sum_mant = 12'h0;
+        sign_result = 1'b0;
+        normalised_exp = 5'h0;
+        shift_count = 5'd0;
+        
+        // --- Xử lý các trường hợp đặc biệt ---
+        if (is_A_nan || is_B_nan || opposite_inf) begin
+            // NaN (Canonical NaN 16-bit: 0_11111_1000000000 = 7E00)
+            out_data = 16'h7E00; 
+        end
+        else if (is_A_inf) begin
+            out_data = {signA, 5'h1F, 10'h0}; // Vô cực theo dấu A
+        end
+        else if (is_B_inf) begin
+            out_data = {signB, 5'h1F, 10'h0}; // Vô cực theo dấu B
+        end
+        else if (is_A_zero && is_B_zero) begin
+            out_data = (signA == signB) ? {signA, 15'h0} : 16'h0;
+        end
+        else if (is_A_zero) begin
+            out_data = in_numB;
+        end
+        else if (is_B_zero) begin
+            out_data = in_numA;
+        end
+        else begin
+            // --- Xử lý trường hợp bình thường ---
+            
+            // 1. Canh chỉnh số mũ
+            if (expA > expB) begin
+                bigger_exp = expA;
+                exp_diff = expA - expB;
+                aligned_A = mantA;
+                
+                // Mantissa chỉ có 11 bit, nếu lệch quá 11 thì coi như bằng 0
+                if (exp_diff > 11) begin
+                    aligned_B = 11'h0; 
+                end else begin
+                    aligned_B = mantB >> exp_diff;
+                end
+            end else if (expB > expA) begin
+                bigger_exp = expB;
+                exp_diff = expB - expA;
+                aligned_B = mantB;
+                
+                if (exp_diff > 11) begin
+                    aligned_A = 11'h0;
+                end else begin
+                    aligned_A = mantA >> exp_diff;
+                end
+            end else begin
+                bigger_exp = expA;
+                aligned_A = mantA;
+                aligned_B = mantB;
+            end
+            
+            // 2. Thực hiện phép tính cộng/trừ
+            if (signA == signB) begin
+                // Cùng dấu: Cộng
+                sum_mant = {1'b0, aligned_A} + {1'b0, aligned_B};
+                sign_result = signA;
+            end else begin
+                // Khác dấu: Trừ
+                if (aligned_A >= aligned_B) begin
+                    sum_mant = {1'b0, aligned_A} - {1'b0, aligned_B};
+                    sign_result = signA;
+                end else begin
+                    sum_mant = {1'b0, aligned_B} - {1'b0, aligned_A};
+                    sign_result = signB;
+                end
+            end
+            
+            // 3. Chuẩn hóa kết quả
+            // sum_mant có 12 bit [11:0]. Bit 11 là tràn, Bit 10 là bit ẩn chuẩn.
+            
+            if (sum_mant == 12'h0) begin
+                out_data = 16'h0;
+            end
+            else if (sum_mant[11]) begin
+                // Tràn (Overflow 1 bit) -> Dịch phải
+                normalised_exp = bigger_exp + 5'd1;
+                
+                if (normalised_exp >= 5'h1F) begin
+                    // Tràn số mũ -> Infinity
+                    out_data = {sign_result, 5'h1F, 10'h0};
+                end else begin
+                    // Lấy 10 bit mantissa (bỏ bit ẩn)
+                    out_data = {sign_result, normalised_exp, sum_mant[10:1]};
+                end
+            end
+            else if (sum_mant[10]) begin
+                // Đã chuẩn hóa (Bit 10 là 1)
+                out_data = {sign_result, bigger_exp, sum_mant[9:0]};
+            end
+            else begin
+                // Leading zeros -> Dịch trái
+                // Kiểm tra từ bit 9 xuống 0
+                if (sum_mant[9])      shift_count = 5'd1;
+                else if (sum_mant[8]) shift_count = 5'd2;
+                else if (sum_mant[7]) shift_count = 5'd3;
+                else if (sum_mant[6]) shift_count = 5'd4;
+                else if (sum_mant[5]) shift_count = 5'd5;
+                else if (sum_mant[4]) shift_count = 5'd6;
+                else if (sum_mant[3]) shift_count = 5'd7;
+                else if (sum_mant[2]) shift_count = 5'd8;
+                else if (sum_mant[1]) shift_count = 5'd9;
+                else if (sum_mant[0]) shift_count = 5'd10;
+                else                  shift_count = 5'd11;
+                
+                if (bigger_exp <= shift_count) begin
+                    // Underflow -> về 0 (hoặc denormalized, ở đây đơn giản hóa về 0)
+                    out_data = {sign_result, 15'h0};
+                end else begin
+                    normalised_exp = bigger_exp - shift_count;
+                    
+                    // Dịch trái để đẩy bit 1 lên vị trí bit 10 (hidden bit)
+                    // Sau đó lấy 10 bit thấp hơn cho phần fraction
+                    case (shift_count)
+                        5'd1:  out_data = {sign_result, normalised_exp, sum_mant[8:0], 1'b0};
+                        5'd2:  out_data = {sign_result, normalised_exp, sum_mant[7:0], 2'b0};
+                        5'd3:  out_data = {sign_result, normalised_exp, sum_mant[6:0], 3'b0};
+                        5'd4:  out_data = {sign_result, normalised_exp, sum_mant[5:0], 4'b0};
+                        5'd5:  out_data = {sign_result, normalised_exp, sum_mant[4:0], 5'b0};
+                        5'd6:  out_data = {sign_result, normalised_exp, sum_mant[3:0], 6'b0};
+                        5'd7:  out_data = {sign_result, normalised_exp, sum_mant[2:0], 7'b0};
+                        5'd8:  out_data = {sign_result, normalised_exp, sum_mant[1:0], 8'b0};
+                        5'd9:  out_data = {sign_result, normalised_exp, sum_mant[0],   9'b0};
+                        5'd10: out_data = {sign_result, normalised_exp, 10'b0}; // Hiếm gặp
+                        default: out_data = {sign_result, normalised_exp, 10'b0};
+                    endcase
+                end
+            end
+        end
+    end
+endmodule

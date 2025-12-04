@@ -1,0 +1,81 @@
+module FP_Mul_16 (
+    input [15:0] A, B,
+    output reg [15:0] Mul_Out
+);
+    wire Sign_A, Sign_B, Sign;
+    wire [9:0] Mantissa_A, Mantissa_B; // 10 bit mantissa
+    wire [4:0] Exponent_A, Exponent_B; // 5 bit exponent
+    wire [10:0] A_m, B_m;              // 1 bit ẩn + 10 bit mantissa = 11 bit
+    wire [21:0] Out_m;                 // 11 bit * 11 bit = 22 bit
+    wire [4:0] E_r;                    // Exponent kết quả trung gian
+    wire [14:0] Normalized_Out;        // 5 bit Exp + 10 bit Mantissa
+
+    // --- Trích xuất các trường hợp đặc biệt (IEEE 754 Half Precision) ---
+    // Zero: Exponent = 0, Mantissa = 0
+    wire is_A_zero = (A[14:0] == 15'h0);
+    wire is_B_zero = (B[14:0] == 15'h0);
+    
+    // Infinity: Exponent = all 1s (31), Mantissa = 0
+    wire is_A_inf = (A[14:10] == 5'h1F && A[9:0] == 10'h0);
+    wire is_B_inf = (B[14:10] == 5'h1F && B[9:0] == 10'h0);
+    
+    // NaN: Exponent = all 1s (31), Mantissa != 0
+    wire is_A_nan = (A[14:10] == 5'h1F && A[9:0] != 10'h0);
+    wire is_B_nan = (B[14:10] == 5'h1F && B[9:0] != 10'h0);
+
+    // --- Kết nối các module con ---
+    Floating_Seperation_16 SD_Separation (
+        .A(A), .B(B),
+        .Sign_A(Sign_A), .Sign_B(Sign_B),
+        .Mantissa_A(Mantissa_A), .Mantissa_B(Mantissa_B),
+        .Exponent_A(Exponent_A), .Exponent_B(Exponent_B)
+    );
+
+    Adder_Exponent_Bias_16 SD_Exp_Adder (
+        .E_a(Exponent_A), .E_b(Exponent_B),
+        .E_r(E_r)
+    );
+
+    Mantissa_Normalisation_16 SD_Mant_Norm (
+        .A_In(Mantissa_A), .B_In(Mantissa_B),
+        .A_Out(A_m), .B_Out(B_m)
+    );
+
+    Mantissa_Multiplier_16 SD_Mant_Mult (
+        .A_m(A_m), .B_m(B_m),
+        .Out_m(Out_m)
+    );
+
+    Normalizer_16 SD_Normalizer (
+        .Out_m(Out_m),
+        .E_r(E_r),
+        .Normalized_Out(Normalized_Out)
+    );
+
+    Sign_Unit_16 SD_Sign (
+        .A_s(Sign_A), .B_s(Sign_B),
+        .Sign(Sign)
+    );
+
+    // --- Xử lý Logic đầu ra ---
+    always @(*) begin
+        if (is_A_nan || is_B_nan) begin
+            Mul_Out = 16'h7E00; // Canonical NaN (Half Precision)
+        end
+        else if ((is_A_inf && is_B_zero) || (is_B_inf && is_A_zero)) begin
+            Mul_Out = 16'h7E00; // Inf * 0 = NaN
+        end
+        else if (is_A_zero || is_B_zero) begin
+            Mul_Out = {Sign, 15'h0}; // Kết quả là 0
+        end
+        else if (is_A_inf || is_B_inf) begin
+            Mul_Out = {Sign, 5'h1F, 10'h0}; // Kết quả là Infinity
+        end
+        else if (Normalized_Out[14:10] == 5'h1F) begin
+            Mul_Out = {Sign, 5'h1F, 10'h0}; // Overflow -> Infinity
+        end
+        else begin
+            Mul_Out = {Sign, Normalized_Out}; // Kết quả bình thường
+        end
+    end
+endmodule

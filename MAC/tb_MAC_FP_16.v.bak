@@ -1,0 +1,81 @@
+`timescale 1ns / 1ps
+
+module tb_MAC_FP_16;
+
+    // Tín hiệu
+    reg clk;
+    reg rst;
+    reg [15:0] A;
+    reg [15:0] B;
+    wire [15:0] Acc_Out;
+
+    // Instance Unit Under Test (UUT)
+    MAC_FP_16 uut (
+        .clk(clk),
+        .rst(rst),
+        .A(A),
+        .B(B),
+        .Acc_Out(Acc_Out)
+    );
+
+    // Tạo xung Clock 100MHz
+    initial begin
+        clk = 0;
+        forever #5 clk = ~clk;
+    end
+
+    // Kịch bản kiểm tra
+    initial begin
+        // 1. Khởi tạo
+        $display("===== BAT DAU TEST MAC =====");
+        rst = 1; A = 0; B = 0;
+        #20;
+        rst = 0; // Thả reset
+        
+        // --- BẮT ĐẦU NẠP DỮ LIỆU ---
+        // Lưu ý: Bộ nhân trễ 5 nhịp.
+        
+        // T1: Nạp 1.0 * 1.0
+        // 1.0 = 0x3C00
+        @(posedge clk); 
+        A = 16'h3C00; B = 16'h3C00; 
+        $display("Time %0t: Input 1.0 * 1.0", $time);
+
+        // T2: Nạp 2.0 * 2.0
+        // 2.0 = 0x4000
+        @(posedge clk); 
+        A = 16'h4000; B = 16'h4000; 
+        $display("Time %0t: Input 2.0 * 2.0", $time);
+
+        // T3: Ngừng nạp (Đưa về 0)
+        // Ta đưa 0 vào để bộ nhân tính ra 0, khi cộng vào Acc sẽ không làm thay đổi kết quả
+        @(posedge clk); 
+        A = 0; B = 0;
+        $display("Time %0t: Stop Input (Filling 0)", $time);
+
+        // --- CHỜ KẾT QUẢ ---
+        // Pipeline Multiplier mất 5 chu kỳ để đẩy kết quả đầu tiên ra
+        
+        // Đợi kết quả tích thứ 1 (1.0) cộng vào Acc
+        repeat(5) @(posedge clk); 
+        #1; // Sample sau cạnh lên
+        $display("Time %0t: Acc = %h (Mong doi: 3C00 - tuc la 1.0)", $time, Acc_Out);
+
+        // Đợi kết quả tích thứ 2 (4.0) cộng vào Acc
+        @(posedge clk); 
+        #1;
+        $display("Time %0t: Acc = %h (Mong doi: 4500 - tuc la 5.0)", $time, Acc_Out);
+
+        // Đợi thêm vài chu kỳ để xem Acc có giữ nguyên giá trị 5.0 không (do cộng với 0)
+        repeat(3) @(posedge clk);
+        #1;
+        if(Acc_Out == 16'h4500) 
+            $display("[PASS] Final Result is stable at 5.0");
+        else 
+            $display("[FAIL] Unstable result: %h", Acc_Out);
+
+        #20;
+        $stop;
+    end
+
+endmodule

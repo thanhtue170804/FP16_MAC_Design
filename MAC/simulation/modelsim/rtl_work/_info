@@ -1,0 +1,236 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/altera/13.0sp1/FPU_ADD_MUL/simulation/modelsim
+vei_adder32
+Z1 !s110 1764827571
+!i10b 1
+!s100 =a9l34O]85h2_m1?DoQEQ3
+InCfM_]4YEBI0hi1ElFlK`1
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1764817467
+8C:/altera/13.0sp1/FPU_ADD_MUL/ei_adder32.v
+FC:/altera/13.0sp1/FPU_ADD_MUL/ei_adder32.v
+L0 1
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1764827571.000000
+!s107 C:/altera/13.0sp1/FPU_ADD_MUL/ei_adder32.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/altera/13.0sp1/FPU_ADD_MUL|C:/altera/13.0sp1/FPU_ADD_MUL/ei_adder32.v|
+!i113 1
+Z5 o-vlog01compat -work work
+Z6 !s92 -vlog01compat -work work +incdir+C:/altera/13.0sp1/FPU_ADD_MUL
+Z7 tCvgOpt 0
+vei_adder8
+Z8 !s110 1764827570
+!i10b 1
+!s100 1V90E4SFm1]AA_JW7z6[Q3
+IiX7:3o8e6OImSF7jLP7Ib1
+R2
+R0
+w1764818645
+8C:/altera/13.0sp1/FPU_ADD_MUL/ei_adder8.v
+FC:/altera/13.0sp1/FPU_ADD_MUL/ei_adder8.v
+L0 1
+R3
+r1
+!s85 0
+31
+Z9 !s108 1764827570.000000
+!s107 C:/altera/13.0sp1/FPU_ADD_MUL/ei_adder8.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/altera/13.0sp1/FPU_ADD_MUL|C:/altera/13.0sp1/FPU_ADD_MUL/ei_adder8.v|
+!i113 1
+R5
+R6
+R7
+vei_multiplier
+R1
+!i10b 1
+!s100 XXlRTXPkj0XFQEoif2fLA1
+IL@3?m_7f[I4dgD:@@TS7o1
+R2
+R0
+w1764825582
+8C:/altera/13.0sp1/FPU_ADD_MUL/ei_multiplier.v
+FC:/altera/13.0sp1/FPU_ADD_MUL/ei_multiplier.v
+L0 2
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/altera/13.0sp1/FPU_ADD_MUL/ei_multiplier.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/altera/13.0sp1/FPU_ADD_MUL|C:/altera/13.0sp1/FPU_ADD_MUL/ei_multiplier.v|
+!i113 1
+R5
+R6
+R7
+vFP_Add_16
+R1
+!i10b 1
+!s100 PGgP8]KVMX7Y9:RKeWPY12
+IGCj`GWC7KfF>=QL8T`6@>1
+R2
+R0
+w1764822624
+8C:/altera/13.0sp1/FPU_ADD_MUL/FP_Add_16.v
+FC:/altera/13.0sp1/FPU_ADD_MUL/FP_Add_16.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/altera/13.0sp1/FPU_ADD_MUL/FP_Add_16.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/altera/13.0sp1/FPU_ADD_MUL|C:/altera/13.0sp1/FPU_ADD_MUL/FP_Add_16.v|
+!i113 1
+R5
+R6
+R7
+n@f@p_@add_16
+vFP_Mul_16
+R1
+!i10b 1
+!s100 2LzD2@g=UfIHK:WYfR;^C0
+IE6>bZX[cRkmEn9`BF>5A13
+R2
+R0
+w1764820819
+8C:/altera/13.0sp1/FPU_ADD_MUL/FP_Mul_16.v
+FC:/altera/13.0sp1/FPU_ADD_MUL/FP_Mul_16.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/altera/13.0sp1/FPU_ADD_MUL/FP_Mul_16.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/altera/13.0sp1/FPU_ADD_MUL|C:/altera/13.0sp1/FPU_ADD_MUL/FP_Mul_16.v|
+!i113 1
+R5
+R6
+R7
+n@f@p_@mul_16
+vfull_adder
+R1
+!i10b 1
+!s100 Y>lSB0SLXFgF9PmBIg8;A3
+I[]8@4BnE>3W[NICR?1j3A0
+R2
+R0
+w1764656506
+8C:/altera/13.0sp1/FPU_ADD_MUL/full_adder.v
+FC:/altera/13.0sp1/FPU_ADD_MUL/full_adder.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/altera/13.0sp1/FPU_ADD_MUL/full_adder.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/altera/13.0sp1/FPU_ADD_MUL|C:/altera/13.0sp1/FPU_ADD_MUL/full_adder.v|
+!i113 1
+R5
+R6
+R7
+vMAC_FP_16
+R8
+!i10b 1
+!s100 QJV:gP`2YHzM71bR:U7]j3
+I3B0M3:04L_MD_1bF^L3iP3
+R2
+R0
+w1764818411
+8C:/altera/13.0sp1/FPU_ADD_MUL/MAC_FP_16.v
+FC:/altera/13.0sp1/FPU_ADD_MUL/MAC_FP_16.v
+L0 3
+R3
+r1
+!s85 0
+31
+R9
+!s107 C:/altera/13.0sp1/FPU_ADD_MUL/MAC_FP_16.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/altera/13.0sp1/FPU_ADD_MUL|C:/altera/13.0sp1/FPU_ADD_MUL/MAC_FP_16.v|
+!i113 1
+R5
+R6
+R7
+n@m@a@c_@f@p_16
+vMantissa_Multiplier_16
+R1
+!i10b 1
+!s100 G2a0CCOHE__ZmzdjNBRUI1
+IjB>cYF<3L[lAg_h98Rfnf1
+R2
+R0
+w1764825882
+8C:/altera/13.0sp1/FPU_ADD_MUL/Mantissa_Multiplier_16.v
+FC:/altera/13.0sp1/FPU_ADD_MUL/Mantissa_Multiplier_16.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/altera/13.0sp1/FPU_ADD_MUL/Mantissa_Multiplier_16.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/altera/13.0sp1/FPU_ADD_MUL|C:/altera/13.0sp1/FPU_ADD_MUL/Mantissa_Multiplier_16.v|
+!i113 1
+R5
+R6
+R7
+n@mantissa_@multiplier_16
+vregN
+R1
+!i10b 1
+!s100 jYERZGJ]983fmD;IIPPX73
+IOl`kVN`X5jmA63FYb_A?k3
+R2
+R0
+w1764655766
+8C:/altera/13.0sp1/FPU_ADD_MUL/regN.v
+FC:/altera/13.0sp1/FPU_ADD_MUL/regN.v
+L0 2
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/altera/13.0sp1/FPU_ADD_MUL/regN.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/altera/13.0sp1/FPU_ADD_MUL|C:/altera/13.0sp1/FPU_ADD_MUL/regN.v|
+!i113 1
+R5
+R6
+R7
+nreg@n
+vtb_MAC_FP_16
+R1
+!i10b 1
+!s100 P?kTZ_ViVEXPV=4@74W7[1
+IBl>dRSo6mgJm:YhY6?UW21
+R2
+R0
+w1764827378
+8C:/altera/13.0sp1/FPU_ADD_MUL/tb_MAC_FP_16.v
+FC:/altera/13.0sp1/FPU_ADD_MUL/tb_MAC_FP_16.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/altera/13.0sp1/FPU_ADD_MUL/tb_MAC_FP_16.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/altera/13.0sp1/FPU_ADD_MUL|C:/altera/13.0sp1/FPU_ADD_MUL/tb_MAC_FP_16.v|
+!i113 1
+R5
+R6
+R7
+ntb_@m@a@c_@f@p_16

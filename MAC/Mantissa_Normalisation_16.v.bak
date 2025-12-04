@@ -1,0 +1,7 @@
+module Mantissa_Normalisation_16 (
+    input [9:0] A_In, B_In,
+    output [10:0] A_Out, B_Out
+);
+    assign A_Out = {1'b1, A_In};
+    assign B_Out = {1'b1, B_In};
+endmodule

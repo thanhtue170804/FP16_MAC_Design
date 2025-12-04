@@ -1,0 +1,159 @@
+# Reading C:/intelFPGA/18.1/modelsim_ase/tcl/vsim/pref.tcl
+# ERROR: No extended dataflow license exists
+# do FPU_run_msim_rtl_verilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 10.5b Lib Mapping Utility 2016.10 Oct  5 2016
+# vmap work rtl_work 
+# Copying C:/intelFPGA/18.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog -vlog01compat -work work +incdir+C:/altera/13.0sp1/FPU_ADD_MUL {C:/altera/13.0sp1/FPU_ADD_MUL/MAC_FP_16.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:52:50 on Dec 04,2025
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/altera/13.0sp1/FPU_ADD_MUL" C:/altera/13.0sp1/FPU_ADD_MUL/MAC_FP_16.v 
+# -- Compiling module MAC_FP_16
+# 
+# Top level modules:
+# 	MAC_FP_16
+# End time: 12:52:50 on Dec 04,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+C:/altera/13.0sp1/FPU_ADD_MUL {C:/altera/13.0sp1/FPU_ADD_MUL/ei_adder8.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:52:50 on Dec 04,2025
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/altera/13.0sp1/FPU_ADD_MUL" C:/altera/13.0sp1/FPU_ADD_MUL/ei_adder8.v 
+# -- Compiling module ei_adder8
+# 
+# Top level modules:
+# 	ei_adder8
+# End time: 12:52:50 on Dec 04,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+C:/altera/13.0sp1/FPU_ADD_MUL {C:/altera/13.0sp1/FPU_ADD_MUL/ei_adder32.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:52:51 on Dec 04,2025
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/altera/13.0sp1/FPU_ADD_MUL" C:/altera/13.0sp1/FPU_ADD_MUL/ei_adder32.v 
+# -- Compiling module ei_adder32
+# 
+# Top level modules:
+# 	ei_adder32
+# End time: 12:52:51 on Dec 04,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+C:/altera/13.0sp1/FPU_ADD_MUL {C:/altera/13.0sp1/FPU_ADD_MUL/FP_Add_16.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:52:51 on Dec 04,2025
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/altera/13.0sp1/FPU_ADD_MUL" C:/altera/13.0sp1/FPU_ADD_MUL/FP_Add_16.v 
+# -- Compiling module FP_Add_16
+# 
+# Top level modules:
+# 	FP_Add_16
+# End time: 12:52:51 on Dec 04,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+C:/altera/13.0sp1/FPU_ADD_MUL {C:/altera/13.0sp1/FPU_ADD_MUL/FP_Mul_16.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:52:51 on Dec 04,2025
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/altera/13.0sp1/FPU_ADD_MUL" C:/altera/13.0sp1/FPU_ADD_MUL/FP_Mul_16.v 
+# -- Compiling module FP_Mul_16
+# 
+# Top level modules:
+# 	FP_Mul_16
+# End time: 12:52:51 on Dec 04,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+C:/altera/13.0sp1/FPU_ADD_MUL {C:/altera/13.0sp1/FPU_ADD_MUL/Mantissa_Multiplier_16.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:52:51 on Dec 04,2025
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/altera/13.0sp1/FPU_ADD_MUL" C:/altera/13.0sp1/FPU_ADD_MUL/Mantissa_Multiplier_16.v 
+# -- Compiling module Mantissa_Multiplier_16
+# 
+# Top level modules:
+# 	Mantissa_Multiplier_16
+# End time: 12:52:51 on Dec 04,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+C:/altera/13.0sp1/FPU_ADD_MUL {C:/altera/13.0sp1/FPU_ADD_MUL/regN.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:52:51 on Dec 04,2025
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/altera/13.0sp1/FPU_ADD_MUL" C:/altera/13.0sp1/FPU_ADD_MUL/regN.v 
+# -- Compiling module regN
+# 
+# Top level modules:
+# 	regN
+# End time: 12:52:51 on Dec 04,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+C:/altera/13.0sp1/FPU_ADD_MUL {C:/altera/13.0sp1/FPU_ADD_MUL/ei_multiplier.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:52:51 on Dec 04,2025
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/altera/13.0sp1/FPU_ADD_MUL" C:/altera/13.0sp1/FPU_ADD_MUL/ei_multiplier.v 
+# -- Compiling module ei_multiplier
+# 
+# Top level modules:
+# 	ei_multiplier
+# End time: 12:52:51 on Dec 04,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+C:/altera/13.0sp1/FPU_ADD_MUL {C:/altera/13.0sp1/FPU_ADD_MUL/full_adder.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:52:51 on Dec 04,2025
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/altera/13.0sp1/FPU_ADD_MUL" C:/altera/13.0sp1/FPU_ADD_MUL/full_adder.v 
+# -- Compiling module full_adder
+# 
+# Top level modules:
+# 	full_adder
+# End time: 12:52:51 on Dec 04,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vlog -vlog01compat -work work +incdir+C:/altera/13.0sp1/FPU_ADD_MUL {C:/altera/13.0sp1/FPU_ADD_MUL/tb_MAC_FP_16.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:52:51 on Dec 04,2025
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/altera/13.0sp1/FPU_ADD_MUL" C:/altera/13.0sp1/FPU_ADD_MUL/tb_MAC_FP_16.v 
+# -- Compiling module tb_MAC_FP_16
+# 
+# Top level modules:
+# 	tb_MAC_FP_16
+# End time: 12:52:51 on Dec 04,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneiv_hssi_ver -L cycloneiv_pcie_hip_ver -L cycloneiv_ver -L rtl_work -L work -voptargs="+acc"  tb_MAC_FP_16
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneiv_hssi_ver -L cycloneiv_pcie_hip_ver -L cycloneiv_ver -L rtl_work -L work -voptargs=""+acc"" tb_MAC_FP_16 
+# Start time: 12:52:52 on Dec 04,2025
+# Loading work.tb_MAC_FP_16
+# Loading work.MAC_FP_16
+# Loading work.FP_Mul_16
+# Loading work.ei_adder8
+# Loading work.Mantissa_Multiplier_16
+# Loading work.ei_multiplier
+# Loading work.regN
+# Loading work.FP_Add_16
+# Loading work.ei_adder32
+# Loading work.full_adder
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run -all
+# === TESTBENCH MAC FP 16 - DEEP CLEAN VERSION ===
+# 
+# --- TEST 1: Basic Accumulation ---
+# [PASS] Step 1: Acc = 1.0
+# [PASS] Step 2: Acc = 5.0
+# 
+# --- TEST 2: Negative Calc (-1.5 * 2.0) ---
+# [PASS] Neg Result: -3.0
+# 
+# --- TEST 3: Pipeline Stress ---
+# [PASS] Seq 1: 1.0
+# [PASS] Seq 2: 2.0
+# [PASS] Seq 3: 3.0
+# [PASS] Seq 4: 4.0
+# 
+# --- TEST 4: Zero Multiplication ---
+# [PASS] Acc stable at 4.0
+# 
+# === ALL TESTS PASSED ===
+# ** Note: $stop    : C:/altera/13.0sp1/FPU_ADD_MUL/tb_MAC_FP_16.v(167)
+#    Time: 676 ns  Iteration: 0  Instance: /tb_MAC_FP_16
+# Break in Module tb_MAC_FP_16 at C:/altera/13.0sp1/FPU_ADD_MUL/tb_MAC_FP_16.v line 167
+# End time: 12:53:10 on Dec 04,2025, Elapsed time: 0:00:18
+# Errors: 0, Warnings: 0

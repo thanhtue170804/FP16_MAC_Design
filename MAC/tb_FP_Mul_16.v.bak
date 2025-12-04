@@ -1,0 +1,123 @@
+`timescale 1ns / 1ps
+
+module tb_FP_Mul_16;
+
+    // 1. Khai báo tín hiệu
+    reg clk;
+    reg rst;
+    reg [15:0] A;
+    reg [15:0] B;
+    wire [15:0] Mul_Out;
+
+    // 2. Gọi module cần test (Unit Under Test)
+    FP_Mul_16 uut (
+        .clk(clk),
+        .rst(rst),
+        .A(A),
+        .B(B),
+        .Mul_Out(Mul_Out)
+    );
+
+    // 3. Tạo xung Clock (Chu kỳ 10ns -> 100MHz)
+    initial begin
+        clk = 0;
+        forever #5 clk = ~clk;
+    end
+
+    // Task hỗ trợ kiểm tra kết quả gọn gàng
+    task check_result;
+        input [15:0] expected_val;
+        begin
+            // Vì Pipeline trễ 5 nhịp, ta đợi 6 nhịp cho chắc chắn ổn định
+            repeat(6) @(posedge clk);
+            
+            #1; // Delay nhỏ để lấy mẫu sau sườn lên
+            if (Mul_Out == expected_val) begin
+                $display("[PASS] Time=%0t | A=%h | B=%h | Out=%h | Expect=%h", 
+                         $time, A, B, Mul_Out, expected_val);
+            end else begin
+                $display("[FAIL] Time=%0t | A=%h | B=%h | Out=%h | Expect=%h (Diff: %h)", 
+                         $time, A, B, Mul_Out, expected_val, (Mul_Out ^ expected_val));
+            end
+        end
+    endtask
+
+    // 4. Kịch bản kiểm tra (Stimulus)
+    initial begin
+        // --- Giai đoạn 1: Khởi tạo và Reset ---
+        $display("===== BAT DAU TESTBENCH PIPELINE 16-BIT =====");
+        A = 0; B = 0; rst = 1;
+        #20; // Giữ reset 2 chu kỳ
+        rst = 0;
+        
+        // --- Giai đoạn 2: Test từng phép tính (Single Check) ---
+        $display("\n--- Test 1: Don le (Latency Check) ---");
+
+        // Case 1: 1.0 * 1.0 = 1.0
+        // 1.0 = 0_01111_0000000000 = 16'h3C00
+        A = 16'h3C00; B = 16'h3C00;
+        check_result(16'h3C00); // Đợi 6 chu kỳ rồi check
+
+        // Case 2: 2.0 * 3.0 = 6.0
+        // 2.0 = 16'h4000
+        // 3.0 = 1.5 * 2^1 = 16'h4200
+        // 6.0 = 1.5 * 2^2 = 16'h4600
+        A = 16'h4000; B = 16'h4200;
+        check_result(16'h4600);
+
+        // Case 3: Số Âm (-1.5 * 2.0 = -3.0)
+        // 1.5 = 3E00 -> -1.5 = BE00
+        // -3.0 = C200
+        A = 16'hBE00; B = 16'h4000;
+        check_result(16'hC200);
+
+        // Case 4: Nhân với 0
+        A = 16'h0000; B = 16'h4200;
+        check_result(16'h0000); // Mong đợi 0
+
+        // --- Giai đoạn 3: Test khả năng Pipeline (Burst Mode) ---
+        // Đưa dữ liệu vào liên tục 3 chu kỳ mà KHÔNG chờ kết quả ngay
+        $display("\n--- Test 2: Pipeline Burst (Nap lien tuc) ---");
+        
+        // Reset lại pipeline cho sạch
+        rst = 1; #10; rst = 0;
+
+        // T1: Đưa 1.0 * 1.0
+        @(posedge clk); A = 16'h3C00; B = 16'h3C00; $display("Time=%0t: Input 1 (1.0 * 1.0)", $time);
+        
+        // T2: Đưa 2.0 * 2.0 (Output mong đợi: 4.0 = 16'h4400)
+        @(posedge clk); A = 16'h4000; B = 16'h4000; $display("Time=%0t: Input 2 (2.0 * 2.0)", $time);
+        
+        // T3: Đưa 10.0 * 10.0 (10.0 = 1.25 * 2^3 = 4900 -> Out 100.0 = 5648)
+        // 10.0 = 0_10010_0100000000 = 0x4900
+        // 100.0 = 1.5625 * 2^6 = 0_10101_1001000000 = 0x5648
+        @(posedge clk); A = 16'h4900; B = 16'h4900; $display("Time=%0t: Input 3 (10.0 * 10.0)", $time);
+        
+        // Ngừng cấp input (đưa về 0)
+        @(posedge clk); A = 0; B = 0;
+
+        // --- Kiểm tra đầu ra tuôn ra liên tục ---
+        // Tính toán thời gian: 
+        // Input 1 vào lúc T1 -> Ra lúc T1 + 5 chu kỳ
+        
+        // Đợi kết quả 1
+        wait(Mul_Out == 16'h3C00); 
+        $display("Time=%0t [PIPELINE OUT 1] Got 1.0", $time);
+
+        // Đợi kết quả 2 (Ngay chu kỳ sau)
+        @(posedge clk);
+        #1; // check
+        if(Mul_Out == 16'h4400) $display("Time=%0t [PIPELINE OUT 2] Got 4.0 (PASS)", $time);
+        else                    $display("Time=%0t [PIPELINE OUT 2] FAIL. Got %h", $time, Mul_Out);
+
+        // Đợi kết quả 3 (Ngay chu kỳ sau nữa)
+        @(posedge clk);
+        #1;
+        if(Mul_Out == 16'h5648) $display("Time=%0t [PIPELINE OUT 3] Got 100.0 (PASS)", $time);
+        else                    $display("Time=%0t [PIPELINE OUT 3] FAIL. Got %h", $time, Mul_Out);
+
+        #50;
+        $finish;
+    end
+
+endmodule

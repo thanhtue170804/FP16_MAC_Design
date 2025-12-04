@@ -1,0 +1,1131 @@
+Analysis & Synthesis report for FPU
+Thu Dec 04 12:32:55 2025
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Registers Removed During Synthesis
+  9. Removed Registers Triggering Further Register Optimizations
+ 10. General Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:ra
+ 13. Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rb
+ 14. Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rr10
+ 15. Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rr11
+ 16. Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rr12
+ 17. Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rr13
+ 18. Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rr20
+ 19. Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rr21
+ 20. Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rout
+ 21. Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:ra
+ 22. Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rb
+ 23. Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr10
+ 24. Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr11
+ 25. Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr12
+ 26. Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr13
+ 27. Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr20
+ 28. Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr21
+ 29. Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rout
+ 30. Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:ra
+ 31. Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rb
+ 32. Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr10
+ 33. Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr11
+ 34. Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr12
+ 35. Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr13
+ 36. Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr20
+ 37. Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr21
+ 38. Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rout
+ 39. Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:ra
+ 40. Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rb
+ 41. Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr10
+ 42. Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr11
+ 43. Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr12
+ 44. Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr13
+ 45. Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr20
+ 46. Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr21
+ 47. Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rout
+ 48. Parameter Settings for User Entity Instance: regN:u_acc_reg
+ 49. Port Connectivity Checks: "regN:u_acc_reg"
+ 50. Port Connectivity Checks: "FP_Add_16:u_adder|ei_adder8:u_norm_exp"
+ 51. Port Connectivity Checks: "FP_Add_16:u_adder|ei_adder32:u_mant_add"
+ 52. Port Connectivity Checks: "FP_Add_16:u_adder|ei_adder8:u_abs_diff"
+ 53. Port Connectivity Checks: "FP_Add_16:u_adder|ei_adder8:u_cmp_exp"
+ 54. Port Connectivity Checks: "FP_Mul_16:u_multiplier|ei_adder8:u_inc_exp"
+ 55. Port Connectivity Checks: "FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH"
+ 56. Port Connectivity Checks: "FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL"
+ 57. Port Connectivity Checks: "FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH"
+ 58. Port Connectivity Checks: "FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult"
+ 59. Port Connectivity Checks: "FP_Mul_16:u_multiplier|ei_adder8:u_sub_bias"
+ 60. Port Connectivity Checks: "FP_Mul_16:u_multiplier|ei_adder8:u_add_exp1"
+ 61. Elapsed Time Per Partition
+ 62. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                         ;
++------------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Thu Dec 04 12:32:55 2025           ;
+; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
+; Revision Name                      ; FPU                                             ;
+; Top-level Entity Name              ; MAC_FP_16                                       ;
+; Family                             ; Cyclone IV GX                                   ;
+; Total logic elements               ; 640                                             ;
+;     Total combinational functions  ; 640                                             ;
+;     Dedicated logic registers      ; 276                                             ;
+; Total registers                    ; 276                                             ;
+; Total pins                         ; 50                                              ;
+; Total virtual pins                 ; 0                                               ;
+; Total memory bits                  ; 0                                               ;
+; Embedded Multiplier 9-bit elements ; 0                                               ;
+; Total GXB Receiver Channel PCS     ; 0                                               ;
+; Total GXB Receiver Channel PMA     ; 0                                               ;
+; Total GXB Transmitter Channel PCS  ; 0                                               ;
+; Total GXB Transmitter Channel PMA  ; 0                                               ;
+; Total PLLs                         ; 0                                               ;
++------------------------------------+-------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Top-level entity name                                                      ; MAC_FP_16          ; FPU                ;
+; Family name                                                                ; Cyclone IV GX      ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                 ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM Block Balancing                                                   ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; On                 ; On                 ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 12          ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 8           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-8         ; < 0.1%      ;
+;     Processors 9-12        ;   0.0%      ;
++----------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                         ;
++----------------------------------+-----------------+------------------------+--------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                           ; Library ;
++----------------------------------+-----------------+------------------------+--------------------------------------------------------+---------+
+; MAC_FP_16.v                      ; yes             ; User Verilog HDL File  ; C:/altera/13.0sp1/FPU_ADD_MUL/MAC_FP_16.v              ;         ;
+; ei_adder8.v                      ; yes             ; User Verilog HDL File  ; C:/altera/13.0sp1/FPU_ADD_MUL/ei_adder8.v              ;         ;
+; ei_adder32.v                     ; yes             ; User Verilog HDL File  ; C:/altera/13.0sp1/FPU_ADD_MUL/ei_adder32.v             ;         ;
+; FP_Add_16.v                      ; yes             ; User Verilog HDL File  ; C:/altera/13.0sp1/FPU_ADD_MUL/FP_Add_16.v              ;         ;
+; FP_Mul_16.v                      ; yes             ; User Verilog HDL File  ; C:/altera/13.0sp1/FPU_ADD_MUL/FP_Mul_16.v              ;         ;
+; Mantissa_Multiplier_16.v         ; yes             ; User Verilog HDL File  ; C:/altera/13.0sp1/FPU_ADD_MUL/Mantissa_Multiplier_16.v ;         ;
+; regN.v                           ; yes             ; User Verilog HDL File  ; C:/altera/13.0sp1/FPU_ADD_MUL/regN.v                   ;         ;
+; ei_multiplier.v                  ; yes             ; User Verilog HDL File  ; C:/altera/13.0sp1/FPU_ADD_MUL/ei_multiplier.v          ;         ;
+; full_adder.v                     ; yes             ; User Verilog HDL File  ; C:/altera/13.0sp1/FPU_ADD_MUL/full_adder.v             ;         ;
++----------------------------------+-----------------+------------------------+--------------------------------------------------------+---------+
+
+
++---------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary ;
++--------------------------+------------------+
+; Resource                 ; Usage            ;
++--------------------------+------------------+
+; I/O pins                 ; 50               ;
+; DSP block 9-bit elements ; 0                ;
+; Maximum fan-out node     ; clk~input        ;
+; Maximum fan-out          ; 276              ;
+; Total fan-out            ; 2615             ;
+; Average fan-out          ; 2.57             ;
++--------------------------+------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                   ;
++--------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+-----------+------+--------------+---------------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                 ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; DSP 36x36 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                               ; Library Name ;
++--------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+-----------+------+--------------+---------------------------------------------------------------------------------------------------+--------------+
+; |MAC_FP_16                                 ; 640 (0)           ; 276 (0)      ; 0           ; 0            ; 0       ; 0         ; 0         ; 50   ; 0            ; |MAC_FP_16                                                                                        ; work         ;
+;    |FP_Add_16:u_adder|                     ; 182 (115)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Add_16:u_adder                                                                      ; work         ;
+;       |ei_adder32:u_mant_add|              ; 53 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Add_16:u_adder|ei_adder32:u_mant_add                                                ; work         ;
+;          |full_adder:ADD_LOOP[19].fa|      ; 29 (29)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Add_16:u_adder|ei_adder32:u_mant_add|full_adder:ADD_LOOP[19].fa                     ; work         ;
+;          |full_adder:ADD_LOOP[21].fa|      ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Add_16:u_adder|ei_adder32:u_mant_add|full_adder:ADD_LOOP[21].fa                     ; work         ;
+;          |full_adder:ADD_LOOP[22].fa|      ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Add_16:u_adder|ei_adder32:u_mant_add|full_adder:ADD_LOOP[22].fa                     ; work         ;
+;          |full_adder:ADD_LOOP[23].fa|      ; 5 (5)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Add_16:u_adder|ei_adder32:u_mant_add|full_adder:ADD_LOOP[23].fa                     ; work         ;
+;          |full_adder:ADD_LOOP[24].fa|      ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Add_16:u_adder|ei_adder32:u_mant_add|full_adder:ADD_LOOP[24].fa                     ; work         ;
+;          |full_adder:ADD_LOOP[25].fa|      ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Add_16:u_adder|ei_adder32:u_mant_add|full_adder:ADD_LOOP[25].fa                     ; work         ;
+;          |full_adder:ADD_LOOP[26].fa|      ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Add_16:u_adder|ei_adder32:u_mant_add|full_adder:ADD_LOOP[26].fa                     ; work         ;
+;          |full_adder:ADD_LOOP[27].fa|      ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Add_16:u_adder|ei_adder32:u_mant_add|full_adder:ADD_LOOP[27].fa                     ; work         ;
+;          |full_adder:ADD_LOOP[28].fa|      ; 5 (5)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Add_16:u_adder|ei_adder32:u_mant_add|full_adder:ADD_LOOP[28].fa                     ; work         ;
+;          |full_adder:ADD_LOOP[29].fa|      ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Add_16:u_adder|ei_adder32:u_mant_add|full_adder:ADD_LOOP[29].fa                     ; work         ;
+;          |full_adder:ADD_LOOP[30].fa|      ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Add_16:u_adder|ei_adder32:u_mant_add|full_adder:ADD_LOOP[30].fa                     ; work         ;
+;       |ei_adder8:u_abs_diff|               ; 3 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Add_16:u_adder|ei_adder8:u_abs_diff                                                 ; work         ;
+;          |full_adder:LOOP_8[1].fa|         ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Add_16:u_adder|ei_adder8:u_abs_diff|full_adder:LOOP_8[1].fa                         ; work         ;
+;          |full_adder:LOOP_8[2].fa|         ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Add_16:u_adder|ei_adder8:u_abs_diff|full_adder:LOOP_8[2].fa                         ; work         ;
+;          |full_adder:LOOP_8[3].fa|         ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Add_16:u_adder|ei_adder8:u_abs_diff|full_adder:LOOP_8[3].fa                         ; work         ;
+;       |ei_adder8:u_cmp_exp|                ; 10 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Add_16:u_adder|ei_adder8:u_cmp_exp                                                  ; work         ;
+;          |full_adder:LOOP_8[0].fa|         ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Add_16:u_adder|ei_adder8:u_cmp_exp|full_adder:LOOP_8[0].fa                          ; work         ;
+;          |full_adder:LOOP_8[1].fa|         ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Add_16:u_adder|ei_adder8:u_cmp_exp|full_adder:LOOP_8[1].fa                          ; work         ;
+;          |full_adder:LOOP_8[2].fa|         ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Add_16:u_adder|ei_adder8:u_cmp_exp|full_adder:LOOP_8[2].fa                          ; work         ;
+;          |full_adder:LOOP_8[3].fa|         ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Add_16:u_adder|ei_adder8:u_cmp_exp|full_adder:LOOP_8[3].fa                          ; work         ;
+;          |full_adder:LOOP_8[4].fa|         ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Add_16:u_adder|ei_adder8:u_cmp_exp|full_adder:LOOP_8[4].fa                          ; work         ;
+;       |ei_adder8:u_norm_exp|               ; 1 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Add_16:u_adder|ei_adder8:u_norm_exp                                                 ; work         ;
+;          |full_adder:LOOP_8[0].fa|         ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Add_16:u_adder|ei_adder8:u_norm_exp|full_adder:LOOP_8[0].fa                         ; work         ;
+;    |FP_Mul_16:u_multiplier|                ; 407 (63)          ; 260 (51)     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier                                                                 ; work         ;
+;       |Mantissa_Multiplier_16:u_mant_mult| ; 332 (38)          ; 209 (12)     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult                              ; work         ;
+;          |ei_multiplier:u_HH|              ; 28 (4)            ; 25 (0)       ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH           ; work         ;
+;             |regN:ra|                      ; 3 (3)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:ra   ; work         ;
+;             |regN:rb|                      ; 2 (2)             ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rb   ; work         ;
+;             |regN:rout|                    ; 6 (6)             ; 6 (6)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rout ; work         ;
+;             |regN:rr10|                    ; 5 (5)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr10 ; work         ;
+;             |regN:rr11|                    ; 2 (2)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr11 ; work         ;
+;             |regN:rr20|                    ; 6 (6)             ; 6 (6)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr20 ; work         ;
+;          |ei_multiplier:u_HL|              ; 73 (16)           ; 57 (0)       ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL           ; work         ;
+;             |regN:rb|                      ; 8 (8)             ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rb   ; work         ;
+;             |regN:rout|                    ; 13 (13)           ; 13 (13)      ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rout ; work         ;
+;             |regN:rr10|                    ; 5 (5)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr10 ; work         ;
+;             |regN:rr11|                    ; 5 (5)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr11 ; work         ;
+;             |regN:rr12|                    ; 5 (5)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr12 ; work         ;
+;             |regN:rr13|                    ; 5 (5)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr13 ; work         ;
+;             |regN:rr20|                    ; 8 (8)             ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr20 ; work         ;
+;             |regN:rr21|                    ; 8 (8)             ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr21 ; work         ;
+;          |ei_multiplier:u_LH|              ; 63 (14)           ; 48 (0)       ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH           ; work         ;
+;             |regN:ra|                      ; 8 (8)             ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:ra   ; work         ;
+;             |regN:rout|                    ; 11 (11)           ; 11 (11)      ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rout ; work         ;
+;             |regN:rr10|                    ; 10 (10)           ; 10 (10)      ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr10 ; work         ;
+;             |regN:rr11|                    ; 9 (9)             ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr11 ; work         ;
+;             |regN:rr20|                    ; 11 (11)           ; 11 (11)      ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr20 ; work         ;
+;          |ei_multiplier:u_LL|              ; 130 (56)          ; 67 (0)       ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL           ; work         ;
+;             |regN:rout|                    ; 12 (12)           ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rout ; work         ;
+;             |regN:rr10|                    ; 9 (9)             ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rr10 ; work         ;
+;             |regN:rr11|                    ; 10 (10)           ; 10 (10)      ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rr11 ; work         ;
+;             |regN:rr12|                    ; 10 (10)           ; 10 (10)      ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rr12 ; work         ;
+;             |regN:rr13|                    ; 10 (10)           ; 10 (10)      ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rr13 ; work         ;
+;             |regN:rr20|                    ; 11 (11)           ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rr20 ; work         ;
+;             |regN:rr21|                    ; 12 (12)           ; 12 (12)      ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rr21 ; work         ;
+;       |ei_adder8:u_add_exp1|               ; 7 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|ei_adder8:u_add_exp1                                            ; work         ;
+;          |full_adder:LOOP_8[0].fa|         ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|ei_adder8:u_add_exp1|full_adder:LOOP_8[0].fa                    ; work         ;
+;          |full_adder:LOOP_8[1].fa|         ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|ei_adder8:u_add_exp1|full_adder:LOOP_8[1].fa                    ; work         ;
+;          |full_adder:LOOP_8[2].fa|         ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|ei_adder8:u_add_exp1|full_adder:LOOP_8[2].fa                    ; work         ;
+;          |full_adder:LOOP_8[3].fa|         ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|ei_adder8:u_add_exp1|full_adder:LOOP_8[3].fa                    ; work         ;
+;       |ei_adder8:u_inc_exp|                ; 2 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|ei_adder8:u_inc_exp                                             ; work         ;
+;          |full_adder:LOOP_8[2].fa|         ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|ei_adder8:u_inc_exp|full_adder:LOOP_8[2].fa                     ; work         ;
+;       |ei_adder8:u_sub_bias|               ; 3 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|ei_adder8:u_sub_bias                                            ; work         ;
+;          |full_adder:LOOP_8[2].fa|         ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|ei_adder8:u_sub_bias|full_adder:LOOP_8[2].fa                    ; work         ;
+;          |full_adder:LOOP_8[3].fa|         ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|ei_adder8:u_sub_bias|full_adder:LOOP_8[3].fa                    ; work         ;
+;          |full_adder:LOOP_8[4].fa|         ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|FP_Mul_16:u_multiplier|ei_adder8:u_sub_bias|full_adder:LOOP_8[4].fa                    ; work         ;
+;    |regN:u_acc_reg|                        ; 51 (51)           ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |MAC_FP_16|regN:u_acc_reg                                                                         ; work         ;
++--------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+-----------+------+--------------+---------------------------------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                                                                                            ;
++-------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+
+; Register name                                                                                         ; Reason for Removal                                                                                    ;
++-------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rb|q[3..7]          ; Stuck at GND due to stuck port data_in                                                                ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:ra|q[3..7]          ; Stuck at GND due to stuck port data_in                                                                ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:ra|q[3..7]          ; Stuck at GND due to stuck port data_in                                                                ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rb|q[3..7]          ; Stuck at GND due to stuck port data_in                                                                ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr21|q[6..15]       ; Lost fanout                                                                                           ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr20|q[6..15]       ; Lost fanout                                                                                           ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr21|q[14,15]       ; Lost fanout                                                                                           ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr20|q[14,15]       ; Lost fanout                                                                                           ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr21|q[14,15]       ; Lost fanout                                                                                           ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr20|q[14,15]       ; Lost fanout                                                                                           ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr13|q[0..15]       ; Stuck at GND due to stuck port data_in                                                                ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr12|q[0..15]       ; Stuck at GND due to stuck port data_in                                                                ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr11|q[0,1,5..15]   ; Stuck at GND due to stuck port data_in                                                                ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr10|q[5..15]       ; Stuck at GND due to stuck port data_in                                                                ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr13|q[0..5,11..15] ; Stuck at GND due to stuck port data_in                                                                ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr12|q[0..3,9..15]  ; Stuck at GND due to stuck port data_in                                                                ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr11|q[0,1,7..15]   ; Stuck at GND due to stuck port data_in                                                                ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr10|q[5..15]       ; Stuck at GND due to stuck port data_in                                                                ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr13|q[0..15]       ; Stuck at GND due to stuck port data_in                                                                ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr12|q[0..15]       ; Stuck at GND due to stuck port data_in                                                                ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr11|q[0,1,10..15]  ; Stuck at GND due to stuck port data_in                                                                ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr10|q[10..15]      ; Stuck at GND due to stuck port data_in                                                                ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rr13|q[0..5]        ; Stuck at GND due to stuck port data_in                                                                ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rr12|q[0..3,14,15]  ; Stuck at GND due to stuck port data_in                                                                ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rr11|q[0,1,12..15]  ; Stuck at GND due to stuck port data_in                                                                ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rr10|q[10..15]      ; Stuck at GND due to stuck port data_in                                                                ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr21|q[0..5]        ; Stuck at GND due to stuck port data_in                                                                ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr21|q[0..3,12,13]  ; Stuck at GND due to stuck port data_in                                                                ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr20|q[8..13]       ; Stuck at GND due to stuck port data_in                                                                ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr21|q[0..13]       ; Stuck at GND due to stuck port data_in                                                                ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr20|q[11..13]      ; Stuck at GND due to stuck port data_in                                                                ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rr21|q[0..3]        ; Stuck at GND due to stuck port data_in                                                                ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rr20|q[13..15]      ; Stuck at GND due to stuck port data_in                                                                ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rout|q[13]          ; Stuck at GND due to stuck port data_in                                                                ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rout|q[11..13]      ; Stuck at GND due to stuck port data_in                                                                ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rb|q[0]             ; Merged with FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rb|q[0] ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rb|q[1]             ; Merged with FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rb|q[1] ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rb|q[2]             ; Merged with FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:ra|q[2] ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:ra|q[2]             ; Merged with FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:ra|q[2] ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rb|q[2]             ; Merged with FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:ra|q[2] ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:ra|q[0]             ; Merged with FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:ra|q[0] ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:ra|q[1]             ; Merged with FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:ra|q[1] ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rb|q[0]             ; Merged with FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rb|q[0] ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rb|q[1]             ; Merged with FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rb|q[1] ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rb|q[2]             ; Merged with FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rb|q[2] ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rb|q[3]             ; Merged with FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rb|q[3] ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rb|q[4]             ; Merged with FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rb|q[4] ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rb|q[5]             ; Merged with FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rb|q[5] ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rb|q[6]             ; Merged with FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rb|q[6] ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rb|q[7]             ; Merged with FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rb|q[7] ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:ra|q[0]             ; Merged with FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:ra|q[0] ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:ra|q[1]             ; Merged with FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:ra|q[1] ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:ra|q[2]             ; Merged with FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:ra|q[2] ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:ra|q[3]             ; Merged with FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:ra|q[3] ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:ra|q[4]             ; Merged with FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:ra|q[4] ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:ra|q[5]             ; Merged with FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:ra|q[5] ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:ra|q[6]             ; Merged with FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:ra|q[6] ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:ra|q[7]             ; Merged with FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:ra|q[7] ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rr20|q[0,1]         ; Lost fanout                                                                                           ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rr10|q[0]           ; Lost fanout                                                                                           ;
+; Total Number of Removed Registers = 290                                                               ;                                                                                                       ;
++-------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                                                                                             ;
++---------------------------------------------------------------------------------------------+---------------------------+-----------------------------------------------------------------------------------------------+
+; Register name                                                                               ; Reason for Removal        ; Registers Removed due to This Register                                                        ;
++---------------------------------------------------------------------------------------------+---------------------------+-----------------------------------------------------------------------------------------------+
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:ra|q[3]   ; Stuck at GND              ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr13|q[11], ;
+;                                                                                             ; due to stuck port data_in ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr13|q[12], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr13|q[13], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr13|q[14], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr13|q[15], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr12|q[9],  ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr12|q[10], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr12|q[11], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr12|q[12], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr12|q[13], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr12|q[14], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr12|q[15], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr11|q[9],  ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr11|q[10], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr11|q[11], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr11|q[12], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr11|q[13], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr11|q[14], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr11|q[15], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr10|q[9],  ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr10|q[10], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr10|q[11], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr10|q[12], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr10|q[13], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr10|q[14], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr10|q[15]  ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr13|q[0] ; Stuck at GND              ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr21|q[6],  ;
+;                                                                                             ; due to stuck port data_in ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr21|q[7],  ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr21|q[8],  ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr21|q[9],  ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr21|q[10], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr21|q[11], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr21|q[12], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr21|q[13]  ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rb|q[3]   ; Stuck at GND              ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr11|q[9],  ;
+;                                                                                             ; due to stuck port data_in ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr11|q[10], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr11|q[11], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr11|q[12], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr11|q[13], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr11|q[14], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr11|q[15]  ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rb|q[4]   ; Stuck at GND              ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr12|q[9],  ;
+;                                                                                             ; due to stuck port data_in ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr12|q[10], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr12|q[11], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr12|q[12], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr12|q[13], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr12|q[14], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr12|q[15]  ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rb|q[6]   ; Stuck at GND              ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr13|q[9],  ;
+;                                                                                             ; due to stuck port data_in ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr13|q[10], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr13|q[11], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr13|q[12], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr13|q[13], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr13|q[14], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr13|q[15]  ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:ra|q[3]   ; Stuck at GND              ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr10|q[9],  ;
+;                                                                                             ; due to stuck port data_in ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr10|q[10], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr10|q[11], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr10|q[12], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr10|q[13], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr10|q[14], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr10|q[15]  ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rb|q[4]   ; Stuck at GND              ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr12|q[9],  ;
+;                                                                                             ; due to stuck port data_in ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr12|q[10], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr12|q[11], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr12|q[12], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr12|q[13], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr12|q[14], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr12|q[15]  ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rb|q[6]   ; Stuck at GND              ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr13|q[9],  ;
+;                                                                                             ; due to stuck port data_in ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr13|q[10], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr13|q[11], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr13|q[12], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr13|q[13], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr13|q[14], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr13|q[15]  ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rb|q[3]   ; Stuck at GND              ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr11|q[10], ;
+;                                                                                             ; due to stuck port data_in ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr11|q[11], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr11|q[12], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr11|q[13], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr11|q[14], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr11|q[15]  ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr13|q[0] ; Stuck at GND              ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr21|q[0],  ;
+;                                                                                             ; due to stuck port data_in ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr21|q[1],  ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr21|q[2],  ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr21|q[3],  ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr21|q[4],  ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr21|q[5]   ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr11|q[0] ; Stuck at GND              ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr20|q[8],  ;
+;                                                                                             ; due to stuck port data_in ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr20|q[9],  ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr20|q[10], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr20|q[11], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr20|q[12], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr20|q[13]  ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr11|q[0] ; Stuck at GND              ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr20|q[11], ;
+;                                                                                             ; due to stuck port data_in ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr20|q[12], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr20|q[13]  ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rr11|q[0] ; Stuck at GND              ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rr20|q[13], ;
+;                                                                                             ; due to stuck port data_in ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rr20|q[14], ;
+;                                                                                             ;                           ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rr20|q[15]  ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr13|q[0] ; Stuck at GND              ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr21|q[12], ;
+;                                                                                             ; due to stuck port data_in ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr21|q[13]  ;
+; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rr20|q[0] ; Lost Fanouts              ; FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rr10|q[0]   ;
++---------------------------------------------------------------------------------------------+---------------------------+-----------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 276   ;
+; Number of registers using Synchronous Clear  ; 133   ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------------------------+
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |MAC_FP_16|FP_Mul_16:u_multiplier|Mul_Out[12]                                                          ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |MAC_FP_16|FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr11|q[7] ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |MAC_FP_16|FP_Mul_16:u_multiplier|pipe_e[0][4]                                                         ;
+; 4:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; Yes        ; |MAC_FP_16|FP_Mul_16:u_multiplier|Mul_Out[3]                                                           ;
+; 5:1                ; 6 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |MAC_FP_16|regN:u_acc_reg|q[15]                                                                        ;
+; 6:1                ; 10 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |MAC_FP_16|regN:u_acc_reg|q[3]                                                                         ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |MAC_FP_16|FP_Add_16:u_adder|ShiftRight0                                                               ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; No         ; |MAC_FP_16|FP_Add_16:u_adder|ShiftRight0                                                               ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |MAC_FP_16|FP_Add_16:u_adder|ShiftRight0                                                               ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |MAC_FP_16|FP_Add_16:u_adder|ShiftRight0                                                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:ra ;
++----------------+-------+----------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                     ;
++----------------+-------+----------------------------------------------------------------------------------------------------------+
+; WIDTH          ; 8     ; Signed Integer                                                                                           ;
++----------------+-------+----------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rb ;
++----------------+-------+----------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                     ;
++----------------+-------+----------------------------------------------------------------------------------------------------------+
+; WIDTH          ; 8     ; Signed Integer                                                                                           ;
++----------------+-------+----------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rr10 ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                       ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; WIDTH          ; 16    ; Signed Integer                                                                                             ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rr11 ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                       ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; WIDTH          ; 16    ; Signed Integer                                                                                             ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rr12 ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                       ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; WIDTH          ; 16    ; Signed Integer                                                                                             ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rr13 ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                       ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; WIDTH          ; 16    ; Signed Integer                                                                                             ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rr20 ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                       ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; WIDTH          ; 16    ; Signed Integer                                                                                             ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rr21 ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                       ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; WIDTH          ; 16    ; Signed Integer                                                                                             ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rout ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                       ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; WIDTH          ; 16    ; Signed Integer                                                                                             ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:ra ;
++----------------+-------+----------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                     ;
++----------------+-------+----------------------------------------------------------------------------------------------------------+
+; WIDTH          ; 8     ; Signed Integer                                                                                           ;
++----------------+-------+----------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rb ;
++----------------+-------+----------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                     ;
++----------------+-------+----------------------------------------------------------------------------------------------------------+
+; WIDTH          ; 8     ; Signed Integer                                                                                           ;
++----------------+-------+----------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr10 ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                       ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; WIDTH          ; 16    ; Signed Integer                                                                                             ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr11 ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                       ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; WIDTH          ; 16    ; Signed Integer                                                                                             ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr12 ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                       ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; WIDTH          ; 16    ; Signed Integer                                                                                             ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr13 ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                       ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; WIDTH          ; 16    ; Signed Integer                                                                                             ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr20 ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                       ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; WIDTH          ; 16    ; Signed Integer                                                                                             ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rr21 ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                       ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; WIDTH          ; 16    ; Signed Integer                                                                                             ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH|regN:rout ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                       ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; WIDTH          ; 16    ; Signed Integer                                                                                             ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:ra ;
++----------------+-------+----------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                     ;
++----------------+-------+----------------------------------------------------------------------------------------------------------+
+; WIDTH          ; 8     ; Signed Integer                                                                                           ;
++----------------+-------+----------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rb ;
++----------------+-------+----------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                     ;
++----------------+-------+----------------------------------------------------------------------------------------------------------+
+; WIDTH          ; 8     ; Signed Integer                                                                                           ;
++----------------+-------+----------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr10 ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                       ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; WIDTH          ; 16    ; Signed Integer                                                                                             ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr11 ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                       ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; WIDTH          ; 16    ; Signed Integer                                                                                             ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr12 ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                       ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; WIDTH          ; 16    ; Signed Integer                                                                                             ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr13 ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                       ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; WIDTH          ; 16    ; Signed Integer                                                                                             ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr20 ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                       ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; WIDTH          ; 16    ; Signed Integer                                                                                             ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rr21 ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                       ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; WIDTH          ; 16    ; Signed Integer                                                                                             ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL|regN:rout ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                       ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; WIDTH          ; 16    ; Signed Integer                                                                                             ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:ra ;
++----------------+-------+----------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                     ;
++----------------+-------+----------------------------------------------------------------------------------------------------------+
+; WIDTH          ; 8     ; Signed Integer                                                                                           ;
++----------------+-------+----------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rb ;
++----------------+-------+----------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                     ;
++----------------+-------+----------------------------------------------------------------------------------------------------------+
+; WIDTH          ; 8     ; Signed Integer                                                                                           ;
++----------------+-------+----------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr10 ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                       ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; WIDTH          ; 16    ; Signed Integer                                                                                             ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr11 ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                       ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; WIDTH          ; 16    ; Signed Integer                                                                                             ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr12 ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                       ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; WIDTH          ; 16    ; Signed Integer                                                                                             ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr13 ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                       ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; WIDTH          ; 16    ; Signed Integer                                                                                             ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr20 ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                       ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; WIDTH          ; 16    ; Signed Integer                                                                                             ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rr21 ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                       ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; WIDTH          ; 16    ; Signed Integer                                                                                             ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH|regN:rout ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                       ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+; WIDTH          ; 16    ; Signed Integer                                                                                             ;
++----------------+-------+------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: regN:u_acc_reg ;
++----------------+-------+------------------------------------+
+; Parameter Name ; Value ; Type                               ;
++----------------+-------+------------------------------------+
+; WIDTH          ; 16    ; Signed Integer                     ;
++----------------+-------+------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------+
+; Port Connectivity Checks: "regN:u_acc_reg" ;
++------+-------+----------+------------------+
+; Port ; Type  ; Severity ; Details          ;
++------+-------+----------+------------------+
+; en   ; Input ; Info     ; Stuck at VCC     ;
++------+-------+----------+------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "FP_Add_16:u_adder|ei_adder8:u_norm_exp"                                                  ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port      ; Type   ; Severity ; Details                                                                             ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; a[7..5]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; b[7..1]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; cin       ; Input  ; Info     ; Stuck at GND                                                                        ;
+; sum[7..5] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; cout      ; Output ; Info     ; Explicitly unconnected                                                              ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "FP_Add_16:u_adder|ei_adder32:u_mant_add"                                                  ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port       ; Type   ; Severity ; Details                                                                             ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; a[20..0]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; a[31]      ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; sum[20..0] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------+
+; Port Connectivity Checks: "FP_Add_16:u_adder|ei_adder8:u_abs_diff" ;
++------+--------+----------+-----------------------------------------+
+; Port ; Type   ; Severity ; Details                                 ;
++------+--------+----------+-----------------------------------------+
+; b    ; Input  ; Info     ; Stuck at GND                            ;
+; cin  ; Input  ; Info     ; Stuck at VCC                            ;
+; cout ; Output ; Info     ; Explicitly unconnected                  ;
++------+--------+----------+-----------------------------------------+
+
+
++-------------------------------------------------------------------+
+; Port Connectivity Checks: "FP_Add_16:u_adder|ei_adder8:u_cmp_exp" ;
++---------+-------+----------+--------------------------------------+
+; Port    ; Type  ; Severity ; Details                              ;
++---------+-------+----------+--------------------------------------+
+; a[7..5] ; Input ; Info     ; Stuck at GND                         ;
+; b[7..5] ; Input ; Info     ; Stuck at VCC                         ;
+; cin     ; Input ; Info     ; Stuck at VCC                         ;
++---------+-------+----------+--------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "FP_Mul_16:u_multiplier|ei_adder8:u_inc_exp"                                              ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port      ; Type   ; Severity ; Details                                                                             ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; a[7..5]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; b[7..1]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; cin       ; Input  ; Info     ; Stuck at GND                                                                        ;
+; sum[7..5] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; cout      ; Output ; Info     ; Explicitly unconnected                                                              ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HH"               ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                             ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; c_out[15..6] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_HL"                ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port          ; Type   ; Severity ; Details                                                                             ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+; c_out[15..14] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LH"                ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port          ; Type   ; Severity ; Details                                                                             ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+; c_out[15..14] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult"                                 ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port        ; Type   ; Severity ; Details                                                                             ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+; A_m[10]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; B_m[10]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; Out_m[9..0] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "FP_Mul_16:u_multiplier|ei_adder8:u_sub_bias"                                           ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; Port    ; Type   ; Severity ; Details                                                                             ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; b[7..4] ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; b[3..1] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; b[0]    ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; cin     ; Input  ; Info     ; Stuck at GND                                                                        ;
+; sum[5]  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; cout    ; Output ; Info     ; Explicitly unconnected                                                              ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------+
+; Port Connectivity Checks: "FP_Mul_16:u_multiplier|ei_adder8:u_add_exp1" ;
++---------+--------+----------+-------------------------------------------+
+; Port    ; Type   ; Severity ; Details                                   ;
++---------+--------+----------+-------------------------------------------+
+; a[7..5] ; Input  ; Info     ; Stuck at GND                              ;
+; b[7..5] ; Input  ; Info     ; Stuck at GND                              ;
+; cin     ; Input  ; Info     ; Stuck at GND                              ;
+; cout    ; Output ; Info     ; Explicitly unconnected                    ;
++---------+--------+----------+-------------------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+    Info: Processing started: Thu Dec 04 12:32:53 2025
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off FPU -c FPU
+Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file tb_mac_fp_16.v
+    Info (12023): Found entity 1: tb_MAC_FP_16
+Info (12021): Found 1 design units, including 1 entities, in source file mac_fp_16.v
+    Info (12023): Found entity 1: MAC_FP_16
+Info (12021): Found 1 design units, including 1 entities, in source file ei_subtractor8.v
+    Info (12023): Found entity 1: ei_subtractor8
+Info (12021): Found 1 design units, including 1 entities, in source file ei_adder8.v
+    Info (12023): Found entity 1: ei_adder8
+Warning (12019): Can't analyze file -- file tb_FP_Add_8.v is missing
+Info (12021): Found 1 design units, including 1 entities, in source file ei_adder32.v
+    Info (12023): Found entity 1: ei_adder32
+Info (12021): Found 1 design units, including 1 entities, in source file ei_adder16.v
+    Info (12023): Found entity 1: ei_adder16
+Info (12021): Found 1 design units, including 1 entities, in source file tb_fp_add_16.v
+    Info (12023): Found entity 1: tb_FP_Add_16
+Info (12021): Found 1 design units, including 1 entities, in source file fp_add_16.v
+    Info (12023): Found entity 1: FP_Add_16
+Info (12021): Found 1 design units, including 1 entities, in source file fp_mul_16.v
+    Info (12023): Found entity 1: FP_Mul_16
+Info (12021): Found 1 design units, including 1 entities, in source file floating_seperation_16.v
+    Info (12023): Found entity 1: Floating_Seperation_16
+Info (12021): Found 1 design units, including 1 entities, in source file mantissa_normalisation_16.v
+    Info (12023): Found entity 1: Mantissa_Normalisation_16
+Info (12021): Found 1 design units, including 1 entities, in source file adder_exponent_bias_16.v
+    Info (12023): Found entity 1: Adder_Exponent_Bias_16
+Info (12021): Found 1 design units, including 1 entities, in source file mantissa_multiplier_16.v
+    Info (12023): Found entity 1: Mantissa_Multiplier_16
+Info (12021): Found 1 design units, including 1 entities, in source file normalizer_16.v
+    Info (12023): Found entity 1: Normalizer_16
+Info (12021): Found 1 design units, including 1 entities, in source file sign_unit_16.v
+    Info (12023): Found entity 1: Sign_Unit_16
+Info (12021): Found 1 design units, including 1 entities, in source file regn.v
+    Info (12023): Found entity 1: regN
+Info (12021): Found 1 design units, including 1 entities, in source file ei_multiplier.v
+    Info (12023): Found entity 1: ei_multiplier
+Info (12021): Found 1 design units, including 1 entities, in source file full_adder.v
+    Info (12023): Found entity 1: full_adder
+Info (12021): Found 1 design units, including 1 entities, in source file tb_fp_mul_16.v
+    Info (12023): Found entity 1: tb_FP_Mul_16
+Info (12127): Elaborating entity "MAC_FP_16" for the top level hierarchy
+Info (12128): Elaborating entity "FP_Mul_16" for hierarchy "FP_Mul_16:u_multiplier"
+Info (12128): Elaborating entity "ei_adder8" for hierarchy "FP_Mul_16:u_multiplier|ei_adder8:u_add_exp1"
+Info (12128): Elaborating entity "full_adder" for hierarchy "FP_Mul_16:u_multiplier|ei_adder8:u_add_exp1|full_adder:LOOP_8[0].fa"
+Info (12128): Elaborating entity "Mantissa_Multiplier_16" for hierarchy "FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult"
+Info (12128): Elaborating entity "ei_multiplier" for hierarchy "FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL"
+Warning (10230): Verilog HDL assignment warning at ei_multiplier.v(14): truncated value with size 32 to match size of target (16)
+Warning (10230): Verilog HDL assignment warning at ei_multiplier.v(15): truncated value with size 32 to match size of target (16)
+Warning (10230): Verilog HDL assignment warning at ei_multiplier.v(16): truncated value with size 32 to match size of target (16)
+Warning (10230): Verilog HDL assignment warning at ei_multiplier.v(17): truncated value with size 32 to match size of target (16)
+Info (12128): Elaborating entity "regN" for hierarchy "FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:ra"
+Info (12128): Elaborating entity "regN" for hierarchy "FP_Mul_16:u_multiplier|Mantissa_Multiplier_16:u_mant_mult|ei_multiplier:u_LL|regN:rr10"
+Info (12128): Elaborating entity "FP_Add_16" for hierarchy "FP_Add_16:u_adder"
+Info (12128): Elaborating entity "ei_adder32" for hierarchy "FP_Add_16:u_adder|ei_adder32:u_mant_add"
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 31 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 690 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 34 input pins
+    Info (21059): Implemented 16 output pins
+    Info (21061): Implemented 640 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 5 warnings
+    Info: Peak virtual memory: 4692 megabytes
+    Info: Processing ended: Thu Dec 04 12:32:55 2025
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:03
+
+
